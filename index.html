@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Expiry Calculator — Algonomy</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <svg class="logo" width="158" height="23" viewBox="0 0 158 23" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Algonomy">
+      <path d="M65.8699 3.00113V6.76403C67.7111 7.89155 68.9472 9.92974 68.9472 12.258C68.9472 15.8022 66.0974 18.685 62.5943 18.685C59.0889 18.685 56.2366 15.8022 56.2366 12.258C56.2366 9.92974 57.4754 7.89155 59.3163 6.76403V3.00113C55.4722 4.34974 52.707 8.00037 52.707 12.2824C52.707 17.6822 57.1412 22.075 62.5943 22.075C68.0424 22.075 72.4768 17.6822 72.4768 12.2824C72.4768 8.00037 69.714 4.34974 65.8699 3.00113Z" fill="black"></path>
+      <path d="M64.4151 9.88892H60.7793V4.673e-05H64.4151V9.88892Z" fill="#F4312A"></path>
+      <path d="M29.4665 21.7726H21.125V2.74546H24.6549V18.3847H29.4665V21.7726Z" fill="black"></path>
+      <path d="M40.433 22.075C35.0478 22.075 30.6641 17.6899 30.6641 12.3063C30.6641 6.86568 35.0988 2.4432 40.5489 2.4432C43.7351 2.4432 46.505 3.85604 48.5568 6.52567L48.9971 7.09527L46.3941 9.52575L45.8688 8.78548C44.4634 6.79905 42.7167 5.83504 40.5274 5.83504C37.0342 5.83504 34.1939 8.74779 34.1939 12.3281C34.1939 13.9599 34.8349 15.5121 36.0036 16.702C37.2227 17.9216 38.9089 18.685 40.387 18.685C42.7506 18.685 45.2692 17.1569 45.7385 14.809H40.6339V11.4174H49.4711L49.4857 12.1975C49.5341 14.7644 49.2147 16.8846 47.4898 18.8843C45.765 20.8824 43.1281 22.075 40.433 22.075Z" fill="black"></path>
+      <path d="M107.852 5.83507C104.349 5.83507 101.499 8.7165 101.499 12.258C101.499 15.802 104.349 18.685 107.852 18.685C111.358 18.685 114.207 15.802 114.207 12.258C114.207 8.7165 111.358 5.83507 107.852 5.83507ZM107.852 22.075C102.404 22.075 97.967 17.682 97.967 12.2825C97.967 6.85827 102.404 2.44323 107.852 2.44323C113.305 2.44323 117.739 6.85827 117.739 12.2825C117.739 17.682 113.305 22.075 107.852 22.075Z" fill="black"></path>
+      <path d="M151.708 21.7726H148.179V13.6987L141.889 2.74546H145.963L149.945 9.71282L153.926 2.74546H158L151.708 13.6987V21.7726Z" fill="black"></path>
+      <path d="M7.43424 13.4335L9.21257 9.27752L10.9447 13.4335H7.43424ZM10.1463 2.74546H8.38259L0 21.7726H3.86828L5.97069 16.8232H12.3695L14.4305 21.7726H18.311L10.1463 2.74546Z" fill="black"></path>
+      <path d="M93.7926 21.746V2.74546H90.2606V15.0675L78.4981 2.74546H76.6582V21.7726H80.1865V9.51694L91.8762 21.746H93.7926Z" fill="black"></path>
+      <path d="M138.215 2.74546H136.417L131.01 15.1925L125.62 2.74546H123.825L120.17 21.7726H123.776L125.686 11.7414L130.158 21.746H131.854L136.354 11.7327L138.265 21.7726H141.867L138.215 2.74546Z" fill="black"></path>
+    </svg>
+    <div class="eyebrow"><span class="dot"></span>Utilities</div>
+  </nav>
+
+  <main class="page">
+    <div class="shell">
+
+      <header class="header">
+        <span class="eyebrow">Expiry calculator</span>
+        <h1>Calculate an end date <span class="accent">your way.</span></h1>
+        <p class="lead">Add any number of days to today. Pick your date format and choose whether to skip or keep weekends.</p>
+      </header>
+
+      <section class="card" aria-label="Expiry calculator">
+
+        <form class="form" id="form" novalidate>
+          <div class="field">
+            <label for="days">Days to add</label>
+            <div class="input-wrap">
+              <input
+                id="days"
+                class="input"
+                type="number"
+                inputmode="numeric"
+                min="0"
+                step="1"
+                value="7"
+                autocomplete="off"
+                aria-describedby="error"
+              />
+              <span class="input-suffix" id="suffix">days</span>
+            </div>
+          </div>
+          <div class="field field-format">
+            <label for="format">Date format</label>
+            <div class="select-wrap">
+              <select id="format" class="input select">
+                <option value="MM/DD/YYYY">MM/DD/YYYY</option>
+                <option value="DD/MM/YYYY">DD/MM/YYYY</option>
+                <option value="YYYY-MM-DD">YYYY-MM-DD</option>
+                <option value="MMM D, YYYY">MMM D, YYYY</option>
+                <option value="D MMM YYYY">D MMM YYYY</option>
+                <option value="DD.MM.YYYY">DD.MM.YYYY</option>
+              </select>
+              <svg class="select-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+          </div>
+          <button class="btn" type="submit" id="calc">
+            Calculate dates
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+          </button>
+        </form>
+
+        <label class="toggle" for="include-weekends">
+          <input id="include-weekends" type="checkbox" />
+          <span class="toggle-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>
+          </span>
+          <span class="toggle-copy">
+            <strong>Include weekends</strong>
+            <span>When off, end dates falling on Sat / Sun shift forward to the next weekday.</span>
+          </span>
+        </label>
+
+        <div class="error-msg" id="error" role="alert">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span id="error-text">Enter a non-negative whole number.</span>
+        </div>
+
+        <div class="results" id="results">
+          <div class="result start">
+            <div class="corner-tint"></div>
+            <div class="label"><span class="pip"></span>Start date</div>
+            <div class="date" id="start-date">—</div>
+            <div class="day" id="start-day">Today</div>
+          </div>
+          <div class="arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+          </div>
+          <div class="result end">
+            <div class="corner-tint"></div>
+            <div class="label"><span class="pip"></span>End date</div>
+            <div class="date" id="end-date">—</div>
+            <div class="day" id="end-day">—</div>
+          </div>
+        </div>
+
+        <div class="note" id="note" role="status">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="m16.24 16.24 2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="m16.24 7.76 2.83-2.83"/></svg>
+          </div>
+          <div class="copy">
+            <strong>Adjusted to skip the weekend</strong>
+            <span id="note-text">The end date originally landed on a weekend, so it was moved to the next weekday.</span>
+          </div>
+        </div>
+
+        <div class="summary" id="summary">
+          <span class="pill" id="pill-days">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
+            <span id="pill-days-text">+7 calendar days</span>
+          </span>
+          <span class="pill" id="pill-format">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span id="pill-format-text">MM/DD/YYYY</span>
+          </span>
+          <span class="pill" id="pill-weekend">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18"/><path d="M3 12h18"/><path d="M3 19h18"/></svg>
+            <span id="pill-weekend-text">Weekends skipped</span>
+          </span>
+        </div>
+
+      </section>
+
+      <p class="foot">Press <kbd>Enter</kbd> in the input or click <strong>Calculate dates</strong>. Toggle <strong>Include weekends</strong> to keep Sat / Sun dates as-is.</p>
+
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
